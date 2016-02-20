@@ -28,7 +28,7 @@ $f_id = gpc_get_int( 'f_id' );
 
     	$t_poster_name	= user_get_name($v_poster_id );
 		$t_poster_email	= user_get_email($v_poster_id );
-        $t_project_name = "Sitewide";
+        $t_project_name = " ";
 		if( $v_project_id != 0 )
     		$t_project_name = project_get_field( $v_project_id, "name" );
 ?>
@@ -37,7 +37,7 @@ $f_id = gpc_get_int( 'f_id' );
 <table class="width75" cellspacing="0">
 <tr>
 	<td class="worklog-heading">
-		<span class="worklog-subject"><?php echo $v_subject ?></span> -
+		<span class="worklog-subject"><?php echo '['.worklog_type_display($v_log_type).']'.$v_subject ?></span> -
 		<span class="worklog-date"><?php echo $v_date_posted ?></span> -
 		<a class="worklog-email" href="mailto:<?php echo $t_poster_email ?>"><?php echo $t_poster_name ?></a> -
 		<?php echo $t_project_name ?>

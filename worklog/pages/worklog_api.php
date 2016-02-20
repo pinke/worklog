@@ -98,3 +98,13 @@
 		$result = db_query_bound( $query );
 	    return db_result( $result, 0, 0 );
 	}
+
+    function worklog_type_display($p_log_type) {
+		switch($p_log_type){
+			case 0:return plugin_lang_get('log_type_day');
+			case 1:return plugin_lang_get('log_type_week');
+			case 2:return plugin_lang_get('log_type_month');
+			case 3:return plugin_lang_get('log_type_year');
+		}
+		return '';
+    }
