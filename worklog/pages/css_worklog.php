@@ -7,3 +7,8 @@ td.worklog-heading		{ background-color: #d8d8d8; color: #000000; text-align: lef
 td.worklog-body	    	{ background-color: #ffffff>; color: #000000; padding: 16pt; }
 
 </style>
+<script>
+    $(document).ready(function() {
+        $("input[name=log_begin'],input[name=log_end]").datepicker();
+    });
+</script>
