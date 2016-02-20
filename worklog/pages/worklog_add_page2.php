@@ -27,7 +27,7 @@ $f_project_id = gpc_get_string( 'project_id' );
 			<?php echo plugin_lang_get( 'log_type' ) ?>
 		</td>
 		<td width="75%">
-			<select name="log_type" size="80">
+			<select name="log_type">
 				<option value="0"><?php echo plugin_lang_get('log_type_day')?></option>
 				<option value="1"><?php echo plugin_lang_get('log_type_week')?></option>
 				<option value="2"><?php echo plugin_lang_get('log_type_month')?></option>
