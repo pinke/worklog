@@ -23,7 +23,7 @@ $f_id = gpc_get_int( 'f_id' );
 		extract( $row, EXTR_PREFIX_ALL, "v" );
 
 		$v_headline 	= string_display( $v_headline );
-		$v_subject 		= string_display_links( $v_subject );
+		$v_content 		= string_display_links( $v_content );
 		$v_date_posted 	= date( $g_normal_date_format, $v_date_posted );
 
     	$t_poster_name	= user_get_name($v_poster_id );
@@ -37,16 +37,16 @@ $f_id = gpc_get_int( 'f_id' );
 <table class="width75" cellspacing="0">
 <tr>
 	<td class="worklog-heading">
-		<span class="worklog-content"><?php echo $v_content ?></span> -
+		<span class="worklog-subject"><?php echo $v_subject ?></span> -
 		<span class="worklog-date"><?php echo $v_date_posted ?></span> -
 		<a class="worklog-email" href="mailto:<?php echo $t_poster_email ?>"><?php echo $t_poster_name ?></a> -
 		<?php echo $t_project_name ?>
 	</td>
 </tr>
 <tr>
-	<td class="worklog-subject">
+	<td class="worklog-content">
 <?php
-        echo $v_subject;
+        echo $v_content;
        	if ( access_has_project_level( DEVELOPER ) ) {
            global $g_worklog_edit_page, $g_worklog_delete_page;
            PRINT "<p align=\"right\"><span  class=\"small\">";
