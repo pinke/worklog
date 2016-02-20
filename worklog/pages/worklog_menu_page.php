@@ -9,7 +9,7 @@ html_page_top2();
 $minimum_level = access_get_global_level();
 $t_where_clausole = "view_access <= $minimum_level";
 if(!isset($_POST['f_all_user'])) {
-	$t_where_clausole .= "and poster_id = ".current_user_get_field( "id" );
+	$t_where_clausole .= " and poster_id = ".current_user_get_field( "id" );
 }
 $p_project_id = helper_get_current_project();
 
