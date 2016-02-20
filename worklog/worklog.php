@@ -46,9 +46,9 @@ class worklogPlugin extends MantisPlugin {
           $proj_id = $t_bug_p->project_id;
         }
 
-        $answer = urlencode( $t_bug_p->description );
-        $answer .= " ";
-        $answer .= urlencode( $t_bug_p->additional_information );
+        $subject = urlencode( $t_bug_p->description );
+        $subject .= " ";
+        $subject .= urlencode( $t_bug_p->additional_information );
 
         $content = category_full_name( $t_bug_p->category_id );
         $content .= " -> ";
@@ -61,8 +61,8 @@ class worklogPlugin extends MantisPlugin {
         }
         $import_page .= '&content=';
         $import_page .= $content;
-        $import_page .= '&answere=';
-        $import_page .= $answer;
+        $import_page .= '&subject=';
+        $import_page .= $subject;
         $import_page .= '&project_id=';
         $import_page .= $proj_id;
 
