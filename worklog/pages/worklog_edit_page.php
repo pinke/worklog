@@ -60,7 +60,7 @@ $f_id = gpc_get_int( 'f_id' );
 			<?php echo plugin_lang_get( 'log_begin_end' ) ?>
 		</td>
 		<td width="75%">
-			<input type="text" name="log_begin"  value="<?php echo $v_log_begin ?>"> -  <input type="text" name="log_end" value="<?php echo $v_log_end ?>" >
+			<input type="text" name="log_begin"  value="<?php echo date('Y-m-d',$v_log_begin) ?>"> -  <input type="text" name="log_end" value="<?php echo $v_log_end ?>" >
 		</td>
 	</tr>
 
@@ -105,7 +105,6 @@ $f_id = gpc_get_int( 'f_id' );
 		<?php echo plugin_lang_get( 'worklog_view_threshold' ) ?>
 	</td>
 	<td >
-
 			<select name="worklog_view_threshold">
 			<?php print_enum_string_option_list( 'access_levels', $v_view_access ) ?>;
 			</select>
