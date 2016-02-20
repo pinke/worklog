@@ -152,15 +152,15 @@ for ($i=0;$i<$worklog_count1;$i++) {
 
 	if (ON == plugin_config_get('worklog_view_window') ){
 		if( helper_get_current_project() == '0000000' ){
-			PRINT "<li><span class=\"worklog-subject\"><a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_subject</a> [$t_project_name] </span><br><span>$v_content</span><br>";
+			PRINT "<li><span class=\"worklog-subject\">[".worklog_type_display($v_log_type)."]<a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_subject</a> [$t_project_name] </span><br><span>$v_content</span><br>";
 		}else{
-			PRINT "<li><span class=\"worklog-subject\"><a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_subject</a></span><br><span>$v_content</span><br>";
+			PRINT "<li><span class=\"worklog-subject\">[".worklog_type_display($v_log_type)."]<a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_subject</a></span><br><span>$v_content</span><br>";
 		}
 	} else{
 		if( helper_get_current_project() == '0000000' ){
-			PRINT "<li><span class=\"worklog-subject\"><a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_subject</a> [$t_project_name] </span><br><span>$v_content</span><br>";
+			PRINT "<li><span class=\"worklog-subject\">[".worklog_type_display($v_log_type)."]<a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_subject</a> [$t_project_name] </span><br><span>$v_content</span><br>";
 		}else{
-			PRINT "<li><span class=\"worklog-subject\"><a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_subject</a></span><br><span>$v_content</span><br>";
+			PRINT "<li><span class=\"worklog-subject\">[".worklog_type_display($v_log_type)."]<a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_subject</a></span><br><span>$v_content</span><br>";
 		}
 	}
 
