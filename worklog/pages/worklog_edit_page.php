@@ -77,10 +77,27 @@ $f_id = gpc_get_int( 'f_id' );
 		<?php echo plugin_lang_get( 'content' ) ?>
 	</td>
 	<td>
-		<textarea name="content" cols="80" rows="10" wrap="virtual"> <?php echo $v_content ?></textarea>
+		<textarea name="content" cols="80" rows="10" wrap="virtual"><?php echo $v_content ?></textarea>
 	</td>
 </tr>
 
+
+	<tr class="row-1" style="display: none">
+		<td class="category" width="25%">
+			<?php echo plugin_lang_get( 'ref_log' ) ?>
+		</td>
+		<td width="75%">
+			<input type="text" name="ref_log_ids" value="<?php echo $v_ref_log_ids ?>" size="80" maxlength="255">
+		</td>
+	</tr>
+	<tr class="row-1" style="display: none">
+		<td class="category" width="25%">
+			<?php echo plugin_lang_get( 'ref_issues' ) ?>
+		</td>
+		<td width="75%">
+			<input type="text" name="ref_issue_ids"  value="<?php echo $v_ref_issue_ids ?>" size="80" maxlength="255">
+		</td>
+	</tr>
 <?php if (ON == plugin_config_get('worklog_view_check') ){ ?>
 
 <tr <?php echo helper_alternate_class() ?>>
