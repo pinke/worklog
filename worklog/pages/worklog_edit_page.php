@@ -60,7 +60,8 @@ $f_id = gpc_get_int( 'f_id' );
 			<?php echo plugin_lang_get( 'log_begin_end' ) ?>
 		</td>
 		<td width="75%">
-			<input type="text" name="log_begin"  value="<?php echo substr($v_log_begin,10) ?>"> -  <input type="text" name="log_end" value="<?php echo $v_log_end ?>" >
+			<input type="text" name="log_begin"  value="<?php echo substr($v_log_begin,0,10) ?>"> -
+			<input type="text" name="log_end" value="<?php echo substr($v_log_end,0,10) ?>" >
 		</td>
 	</tr>
 
