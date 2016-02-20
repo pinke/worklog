@@ -29,6 +29,13 @@ class worklogPlugin extends MantisPlugin {
   function init() {
     plugin_event_hook( 'EVENT_MENU_MAIN', 'mainmenu' );
     plugin_event_hook( 'EVENT_MENU_ISSUE', 'worklogmenu' );
+    plugin_event_hook('EVENT_LAYOUT_RESOURCES', 'resources');
+
+  }
+
+  function resources( $p_event ) {
+    return '<link rel="stylesheet" type="text/css" href="' . plugin_file( 'worklog.css' ) . '"/>';
+    return '<script type="text/javascript" src="' . plugin_file( 'worklog.js' ) . '"></script>';
   }
 
   function mainmenu() {
