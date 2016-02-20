@@ -15,17 +15,17 @@ if (OFF == plugin_config_get('worklog_view_window') ){
 	$f_content	  = gpc_get_string( 'content' );
 	$f_subject	  = gpc_get_string( 'subject' );
 	$f_project_id = gpc_get_int( 'project_id' );
-	$f_log_begin = gpc_get_int( 'log_begin' );
-	$f_log_end = gpc_get_int( 'log_end' );
-	$f_ref_log_ids = gpc_get_int( 'ref_log_ids' );
-	$f_ref_issue_ids = gpc_get_int( 'ref_issue_ids' );
+	$f_log_begin = gpc_get_string( 'log_begin' );
+	$f_log_end = gpc_get_string( 'log_end' );
+	$f_ref_log_ids = gpc_get_string( 'ref_log_ids' );
+	$f_ref_issue_ids = gpc_get_string( 'ref_issue_ids' );
 	$f_poster_id  = gpc_get_int( 'f_id' );
 	if (plugin_config_get('worklog_view_check') )
 		$f_view_access = gpc_get_int( 'worklog_view_threshold' );
 	else
 		$f_view_access = 0;
 
-    $result = worklog_update_query( $f_poster_id, $f_content, $f_subject, $f_project_id,$f_log_begin,$f_log_end,$f_ref_issue_ids,$f_ref_log_ids,$f_view_access );
+    $result = worklog_update_query( $f_poster_id, $f_content, $f_subject, $f_project_id,$f_log_begin,$f_log_end, $f_ref_issue_ids, $f_ref_log_ids,$f_view_access );
 
     $f_content 	= string_display( $f_content );
     $f_subject 		= string_display( $f_subject );
