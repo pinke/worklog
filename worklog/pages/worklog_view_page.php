@@ -43,20 +43,6 @@ $f_id = gpc_get_int( 'f_id' );
 		<?php echo $t_project_name ?>
 	</td>
 </tr>
-<tr>
-	<td class="worklog-content">
-<?php
-        echo $v_content;
-       	if ( access_has_project_level( DEVELOPER ) ) {
-           global $g_worklog_edit_page, $g_worklog_delete_page;
-           PRINT "<p align=\"right\"><span  class=\"small\">";
-           print_bracket_link( $g_worklog_edit_page . "&f_id=$v_id", lang_get( 'bugnote_edit_link' ) );
-           print_bracket_link( $g_worklog_delete_page . "&f_id=$v_id", lang_get( 'delete_link' ) );
-           PRINT "</span></p>";
-        }
-?>
-	</td>
-</tr>
 </table>
 </div>
 <?php
@@ -66,6 +52,14 @@ $f_id = gpc_get_int( 'f_id' );
 <p>
 <div align="center">
 	<?php
+	echo $v_content;
+	if ( access_has_project_level( DEVELOPER ) ) {
+		global $g_worklog_edit_page, $g_worklog_delete_page;
+		PRINT "<p align=\"right\"><span  class=\"small\">";
+		print_bracket_link( $g_worklog_edit_page . "&f_id=$v_id", lang_get( 'bugnote_edit_link' ) );
+		print_bracket_link( $g_worklog_delete_page . "&f_id=$v_id", lang_get( 'delete_link' ) );
+		PRINT "</span></p>";
+	}
 	      global $g_worklog_menu_page;
 		  if (OFF == plugin_config_get('worklog_view_window') ){
 			print_bracket_link( $g_worklog_menu_page, lang_get( 'back_link' ) );
