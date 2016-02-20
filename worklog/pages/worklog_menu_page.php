@@ -8,9 +8,12 @@ html_page_top2();
 
 $minimum_level = access_get_global_level();
 $t_where_clausole = "view_access <= $minimum_level";
+if(!isset($_POST['f_all_user'])) {
+	$t_where_clausole .= "and poster_id = ".current_user_get_field( "id" );
+}
 $p_project_id = helper_get_current_project();
 
-if( $p_project_id != 0 &&false) {//pk remove filter by project
+if( $p_project_id != 0 ) {//pk remove filter by project
     $t_where_clausole .= " and ((project_id='".$p_project_id."' OR project_id=0)";
 	$t_project_ids = project_hierarchy_get_subprojects( $p_project_id );
 	foreach ($t_project_ids as $value) {
@@ -145,7 +148,7 @@ for ($i=0;$i<$worklog_count1;$i++) {
    		$t_project_name = project_get_field( $v_project_id, "name" );
 	}
 	$v_content = trim(substr($v_content, 0, 25));
-	$v_content .=".............";
+	$v_content .="...";
 
 	if (ON == plugin_config_get('worklog_view_window') ){
 		if( helper_get_current_project() == '0000000' ){
