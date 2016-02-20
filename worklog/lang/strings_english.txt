@@ -1,0 +1,25 @@
+<?php
+$s_menu_worklog_link = "FAQ";
+$s_plugin_worklog_add_worklog = "Add FAQ";
+$s_plugin_worklog_add_worklog_title = "New FAQ";
+$s_plugin_worklog_post_worklog_button = "Promote to FAQ";
+$s_plugin_worklog_content = "content";
+$s_plugin_worklog_answere = "Answer";
+$s_plugin_worklog_delete_worklog_sure_msg = "Really delete this FAQ?";
+$s_plugin_worklog_delete_worklog_item_button = "Delete FAQ";
+$s_plugin_worklog_edit_worklog_title = "Edit FAQ";
+$s_plugin_worklog_update_worklog_button = "Update FAQ";
+$s_plugin_worklog_import_worklog = "Promote to FAQ";
+$s_plugin_worklog_search_string = "Search whole string";
+$s_plugin_worklog_close_window = "Close Window";
+// config section
+$s_plugin_worklog_plugin_format_title = "Mantis FAQ";
+$s_plugin_worklog_plugin_format_config = "Configuration";
+$s_plugin_worklog_plugin_format_promote_text = "Issues can be promoted to FAQ's";
+$s_plugin_worklog_plugin_format_project_text = "Save FAQ by project";
+$s_plugin_worklog_plugin_format_threshold_text = "Minimum threshold to create FAQ";
+$s_plugin_worklog_worklog_view_check = "Maintain FAQ before promoting";
+$s_plugin_worklog_worklog_view_threshold = "Minimum treshold for viewing FAQ's";
+$s_plugin_worklog_worklog_view_window = "Open FAQ's in new window";
+$s_plugin_worklog_plugin_format_enabled = "On";
+$s_plugin_worklog_plugin_format_disabled = "Off";

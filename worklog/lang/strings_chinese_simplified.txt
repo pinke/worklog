@@ -1,0 +1,25 @@
+<?php
+$s_menu_worklog_link = "工作日志";
+$s_plugin_worklog_add_worklog = "添加日志";
+$s_plugin_worklog_add_worklog_title = "新建日志";
+$s_plugin_worklog_post_worklog_button = "添加为日志";
+$s_plugin_worklog_content = "标题";
+$s_plugin_worklog_answere = "答案";
+$s_plugin_worklog_delete_worklog_sure_msg = "确认要删除这条日志吗？";
+$s_plugin_worklog_delete_worklog_item_button = "删除日志";
+$s_plugin_worklog_edit_worklog_title = "编辑日志";
+$s_plugin_worklog_update_worklog_button = "更新日志";
+$s_plugin_worklog_import_worklog = "导入到日志";
+$s_plugin_worklog_search_string = "搜索";
+$s_plugin_worklog_close_window = "关闭窗口";
+// config section
+$s_plugin_worklog_plugin_format_title = "工作日志";
+$s_plugin_worklog_plugin_format_config = "配置";
+$s_plugin_worklog_plugin_format_promote_text = "问题可以添加为工作日志";
+$s_plugin_worklog_plugin_format_project_text = "以项目保存工作日志";
+$s_plugin_worklog_plugin_format_threshold_text = "创建FAQ的最小权限";
+$s_plugin_worklog_worklog_view_check = "Maintain FAQ before promoting";
+$s_plugin_worklog_worklog_view_threshold = "查看工作日志的最小权限";
+$s_plugin_worklog_worklog_view_window = "在新窗口打开工作日志";
+$s_plugin_worklog_plugin_format_enabled = "启用";
+$s_plugin_worklog_plugin_format_disabled = "禁用";

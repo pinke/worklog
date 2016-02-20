@@ -1,0 +1,169 @@
+<?php
+require( "worklog_api.php" );
+require( "css_worklog.php" );
+access_ensure_global_level( plugin_config_get( 'worklog_view_threshold' ) );
+html_page_top1();
+html_page_top2();
+# Select the faq posts
+
+$minimum_level = access_get_global_level();
+$t_where_clausole = "view_access <= $minimum_level";
+$p_project_id = helper_get_current_project();
+
+if( $p_project_id != 0 &&false) {//pk remove filter by project
+    $t_where_clausole .= " and ((project_id='".$p_project_id."' OR project_id=0)";
+	$t_project_ids = project_hierarchy_get_subprojects( $p_project_id );
+	foreach ($t_project_ids as $value) {
+		$t_where_clausole .= " or project_id='".$value."'";
+	}
+	$t_where_clausole .= ")";
+}
+$f_search = $_POST["f_search"];
+if( !isset( $f_search ) ) {
+	$f_search = "";
+	$f_search3 = "";
+	$f_search2 = "";
+} else {
+	$f_search3 = "";
+	$f_search2 = "";
+    if( $t_where_clausole != "" ){
+        $t_where_clausole = $t_where_clausole . " AND ";
+	}
+
+	$f_search=trim($f_search);
+	$what = " ";
+	$pos = strpos($f_search, $what);
+
+	$search_string = $_POST["search_string"];
+	if (($pos === false) or (isset( $search_string ))){
+		$t_where_clausole = $t_where_clausole . " ( (content LIKE '%".addslashes($f_search)."%')
+				OR (subject LIKE '%".addslashes($f_search)."%') ) ";
+	} else {
+		$pos1 = strpos($f_search, $what, $pos+1);
+		if ($pos1 === false) {
+			$f_search2 = substr($f_search, $pos);
+		} else {
+			$len1=$pos1-$pos;
+			$f_search2 = substr($f_search, $pos1,$len1);
+		}
+		$f_search3 = substr($f_search,0, $pos);
+		$f_search3=trim($f_search3);
+		$f_search2=trim($f_search2);
+		$t_where_clausole = $t_where_clausole . " ((content LIKE '%".addslashes($f_search3)."%') and (content LIKE '%".addslashes($f_search2)."%'))
+					OR ((subject LIKE '%".addslashes($f_search3)."%') and (subject LIKE '%".addslashes($f_search2)."%')) ";
+	}
+}
+
+$query = "SELECT id, poster_id, project_id, UNIX_TIMESTAMP(date_posted) as date_posted, content, subject FROM $g_mantis_worklog_table";
+if( $t_where_clausole != "" ){
+    $query = $query . " WHERE $t_where_clausole";
+}
+
+$query = $query . " ORDER BY UPPER(content) ASC";
+$result = db_query_bound( $query );
+$worklog_count = db_num_rows( $result );
+?>
+<p>
+<table class="width100" cellspacing="0">
+<form method="post" action="<?php echo $g_worklog_menu_page ?>">
+<tr class="row-category2">
+<td class="small-caption">
+<?php PRINT lang_get( 'search'); ?>
+</td>
+<td class="small-caption">
+<?php PRINT ""; ?>
+</td>
+</tr>
+<tr>
+<td class="small-caption">
+<input type="text" size="25" name="f_search" value="<?php echo $f_search; ?>">
+<input  type="checkbox" name="search_string" id="search_string" > <label for="search_string"><?php echo plugin_lang_get( 'search_string' ) ?></label>
+</td>
+<td class="right">
+   <input type="submit" name="f_filter" value="<?php echo lang_get( 'filter_button') ?>">
+</td>
+</form>
+</table>
+<table width="100%" cellspacing="0" border="0" cellpadding="0">
+<tr>
+<td class="small-caption">
+<?php
+echo $worklog_count . " ";
+?>
+</td>
+<td class="right">
+<?php
+if ( access_has_project_level( DEVELOPER ) ) {
+    global $g_worklog_add_page;
+    print_bracket_link( $g_worklog_add_page, plugin_lang_get( 'add_worklog') );
+}
+?>
+</td>
+</tr>
+</table>
+<ul>
+<?php
+
+# Loop through results
+if( $f_search == "" ){
+    $worklog_count1=15;
+	if ($worklog_count==0){
+		$worklog_count1=0;
+	}
+	if ($worklog_count1 > $worklog_count){
+		$worklog_count1=$worklog_count;
+	}
+} else {
+    $worklog_count1=$worklog_count;
+}
+
+for ($i=0;$i<$worklog_count1;$i++) {
+	$row = db_fetch_array($result);
+	extract( $row, EXTR_PREFIX_ALL, "v" );
+    if(( isset( $search_string )) or ($pos === false)) {
+   		$v_content = eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_content );
+    	$v_subject 	= eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_subject );
+    }
+    if( $f_search2 != "" )  {
+   		$v_content = eregi_replace ( $f_search2, "<b>".$f_search2."</b>", $v_content );
+    	$v_subject 	= eregi_replace ( $f_search2, "<b>".$f_search2."</b>", $v_subject );
+    }
+    if( $f_search3 != "" )  {
+   		$v_content = eregi_replace ( $f_search3, "<b>".$f_search3."</b>", $v_content );
+    	$v_subject 	= eregi_replace ( $f_search3, "<b>".$f_search3."</b>", $v_subject );
+    }
+	$v_content = string_display( $v_content );
+	$v_subject 	= string_display_links( $v_subject );
+	$v_date_posted = date( $g_complete_date_format, $v_date_posted );
+
+	# grab the username and email of the poster
+   	$t_poster_name	= user_get_name($v_poster_id );
+	$t_poster_email	= user_get_email($v_poster_id );
+
+    $t_project_name = "Sitewide";
+	if( $v_project_id != 0 ) {
+   		$t_project_name = project_get_field( $v_project_id, "name" );
+	}
+	$v_subject = trim(substr($v_subject, 0, 25));
+	$v_subject .=".............";
+
+	if (ON == plugin_config_get('worklog_view_window') ){
+		if( helper_get_current_project() == '0000000' ){
+			PRINT "<li><span class=\"worklog-content\"><a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_content</a> [$t_project_name] </span><br><span>$v_subject</span><br>";
+		}else{
+			PRINT "<li><span class=\"worklog-content\"><a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_content</a></span><br><span>$v_subject</span><br>";
+		}
+	} else{
+		if( helper_get_current_project() == '0000000' ){
+			PRINT "<li><span class=\"worklog-content\"><a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_content</a> [$t_project_name] </span><br><span>$v_subject</span><br>";
+		}else{
+			PRINT "<li><span class=\"worklog-content\"><a href=\"$g_worklog_view_page&f_id=$v_id\" >$v_content</a></span><br><span>$v_subject</span><br>";
+		}
+	}
+
+    PRINT "<span  class=\"small\">$v_date_posted - <a class=\"worklog-email\" href=\"mailto:$t_poster_email\">$t_poster_name</a></span><br><br>";
+}  # end for loop
+?>
+</ul>
+<?php
+html_page_bottom1();
