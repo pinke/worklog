@@ -3,8 +3,17 @@ $s_menu_worklog_link = "工作日志";
 $s_plugin_worklog_add_worklog = "添加日志";
 $s_plugin_worklog_add_worklog_title = "新建日志";
 $s_plugin_worklog_post_worklog_button = "添加为日志";
-$s_plugin_worklog_content = "标题";
-$s_plugin_worklog_answere = "答案";
+$s_plugin_worklog_content = "内容";
+$s_plugin_worklog_subject = "主题";
+$s_plugin_worklog_type = "类型";
+$s_plugin_worklog_type_day = "日报";
+$s_plugin_worklog_type_week = "周报";
+$s_plugin_worklog_type_month = "月报";
+$s_plugin_worklog_type_year = "年报";
+$s_plugin_worklog_log_begin = "日志开始日期";
+$s_plugin_worklog_log_end = "日志结果日期";
+$s_plugin_worklog_ref_log_ids = "相关日志";
+$s_plugin_worklog_ref_issues_ids = "相关Issues";
 $s_plugin_worklog_delete_worklog_sure_msg = "确认要删除这条日志吗？";
 $s_plugin_worklog_delete_worklog_item_button = "删除日志";
 $s_plugin_worklog_edit_worklog_title = "编辑日志";
@@ -12,6 +21,7 @@ $s_plugin_worklog_update_worklog_button = "更新日志";
 $s_plugin_worklog_import_worklog = "导入到日志";
 $s_plugin_worklog_search_string = "搜索";
 $s_plugin_worklog_close_window = "关闭窗口";
+
 // config section
 $s_plugin_worklog_plugin_format_title = "工作日志";
 $s_plugin_worklog_plugin_format_config = "配置";
