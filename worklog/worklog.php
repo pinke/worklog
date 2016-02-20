@@ -1,5 +1,5 @@
 <?php
-class FAQPlugin extends MantisPlugin {
+class worklogPlugin extends MantisPlugin {
 
   function register() {
     $this->name        = 'worklog';
@@ -28,14 +28,14 @@ class FAQPlugin extends MantisPlugin {
 
   function init() {
     plugin_event_hook( 'EVENT_MENU_MAIN', 'mainmenu' );
-    plugin_event_hook( 'EVENT_MENU_ISSUE', 'faqmenu' );
+    plugin_event_hook( 'EVENT_MENU_ISSUE', 'worklogmenu' );
   }
 
   function mainmenu() {
     return array( '<a href="'. plugin_page( 'worklog_menu_page.php' ) . '">' . lang_get( 'menu_worklog_link' ) . '</a>' );
   }
 
-  function faqmenu() {
+  function worklogmenu() {
     if (ON == plugin_config_get( 'promote_text' ) ){
       $bugid = gpc_get_int( 'id' );
       if ( access_has_bug_level( plugin_config_get( 'promote_threshold' ), $bugid ) ){
