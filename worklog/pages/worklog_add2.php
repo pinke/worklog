@@ -1,6 +1,6 @@
 <?php
 require( "worklog_api.php" );
-require( "css_worklog.php" );
+
 html_page_top1();
   html_page_top2();
 ?>

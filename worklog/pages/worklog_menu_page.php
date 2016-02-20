@@ -1,6 +1,6 @@
 <?php
 require( "worklog_api.php" );
-require( "css_worklog.php" );
+
 access_ensure_global_level( plugin_config_get( 'worklog_view_threshold' ) );
 html_page_top1();
 html_page_top2();
@@ -84,6 +84,13 @@ $worklog_count = db_num_rows( $result );
 </td>
 <td class="right">
    <input type="submit" name="f_filter" value="<?php echo lang_get( 'filter_button') ?>">
+
+	<?php
+	if ( access_has_project_level( DEVELOPER ) ) {
+		global $g_worklog_add_page;
+		print_bracket_link( $g_worklog_add_page, plugin_lang_get( 'add_worklog') );
+	}
+	?>
 </td>
 </form>
 </table>
@@ -95,12 +102,6 @@ echo $worklog_count . " ";
 ?>
 </td>
 <td class="right">
-<?php
-if ( access_has_project_level( DEVELOPER ) ) {
-    global $g_worklog_add_page;
-    print_bracket_link( $g_worklog_add_page, plugin_lang_get( 'add_worklog') );
-}
-?>
 </td>
 </tr>
 </table>

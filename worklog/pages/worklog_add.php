@@ -1,6 +1,5 @@
 <?php
 require( "worklog_api.php" );
-require( "css_worklog.php" );
 html_page_top1();
 if (OFF == plugin_config_get('worklog_view_window') ){
   html_page_top2();
