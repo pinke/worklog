@@ -23,7 +23,7 @@ $f_id = gpc_get_int( 'f_id' );
 		extract( $row, EXTR_PREFIX_ALL, "v" );
 
 		$v_headline 	= string_display( $v_headline );
-		$v_answere 		= string_display_links( $v_answere );
+		$v_subject 		= string_display_links( $v_subject );
 		$v_date_posted 	= date( $g_normal_date_format, $v_date_posted );
 
     	$t_poster_name	= user_get_name($v_poster_id );
@@ -44,9 +44,9 @@ $f_id = gpc_get_int( 'f_id' );
 	</td>
 </tr>
 <tr>
-	<td class="worklog-answere">
+	<td class="worklog-subject">
 <?php
-        echo $v_answere;
+        echo $v_subject;
        	if ( access_has_project_level( DEVELOPER ) ) {
            global $g_worklog_edit_page, $g_worklog_delete_page;
            PRINT "<p align=\"right\"><span  class=\"small\">";

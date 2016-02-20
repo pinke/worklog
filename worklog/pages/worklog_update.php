@@ -13,7 +13,7 @@ if (OFF == plugin_config_get('worklog_view_window') ){
 
 	# Update faq
 	$f_content	  = gpc_get_string( 'content' );
-	$f_answere	  = gpc_get_string( 'answere' );
+	$f_subject	  = gpc_get_string( 'subject' );
 	$f_project_id = gpc_get_int( 'project_id' );
 	$f_poster_id  = gpc_get_int( 'f_id' );
 	if (plugin_config_get('worklog_view_check') )
@@ -21,10 +21,10 @@ if (OFF == plugin_config_get('worklog_view_window') ){
 	else
 		$f_view_access = 0;
 
-    $result = worklog_update_query( $f_poster_id, $f_content, $f_answere, $f_project_id,$f_view_access );
+    $result = worklog_update_query( $f_poster_id, $f_content, $f_subject, $f_project_id,$f_view_access );
 
     $f_content 	= string_display( $f_content );
-    $f_answere 		= string_display( $f_answere );
+    $f_subject 		= string_display( $f_subject );
 
 	if ( $result ) {				# SUCCESS
 		PRINT lang_get( 'operation_successful' ) . '<p>';
@@ -36,8 +36,8 @@ if (OFF == plugin_config_get('worklog_view_window') ){
 	</td>
 </tr>
 <tr>
-	<td class="worklog-answere">
-		<?php echo $f_answere ?>
+	<td class="worklog-subject">
+		<?php echo $f_subject ?>
 	</td>
 </tr>
 </table>
