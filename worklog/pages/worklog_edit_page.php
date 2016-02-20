@@ -46,7 +46,7 @@ $f_id = gpc_get_int( 'f_id' );
 			<?php echo plugin_lang_get( 'log_type' ) ?>
 		</td>
 		<td width="75%">
-			<select name="log_type" size="80">
+			<select name="log_type">
 				<option value="0" <?php echo $v_log_type==0?' selected=selectd ':'' ?>><?php echo plugin_lang_get('log_type_day')?></option>
 				<option value="1" <?php echo $v_log_type==1?' selected=selectd ':'' ?> ><?php echo plugin_lang_get('log_type_week')?></option>
 				<option value="2" <?php echo $v_log_type==2?' selected=selectd ':'' ?> ><?php echo plugin_lang_get('log_type_month')?></option>
