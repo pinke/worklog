@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $("input[name=log_begin'],input[name=log_end]").datepicker();
+    $("input[name=log_begin],input[name=log_end]").datepicker();
 });
