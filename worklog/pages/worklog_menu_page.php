@@ -8,8 +8,10 @@ html_page_top2();
 
 $minimum_level = access_get_global_level();
 $t_where_clausole = "view_access <= $minimum_level";
-if(!isset($_POST['f_all_user'])) {
-	$t_where_clausole .= " and poster_id = ".current_user_get_field( "id" );
+if (!isset($_POST['f_all_user']) || !isset($_GET['f_all_user'])) { //allow show all youser
+	$t_where_clausole .= " and poster_id = " . current_user_get_field("id");
+} else if (!isset($_POST['f_user_id'])) { //show by userId
+	$t_where_clausole .= " and poster_id = " . gpc_get_int("poster_id");
 }
 $p_project_id = helper_get_current_project();
 
