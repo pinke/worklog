@@ -12,8 +12,19 @@ var weeklog_content_template = {
 };
 
 function weeklog_page_add_onLogTypeChange(logType) {
+    var subjectEl = $('input[name="subject"]');
+    var logBeginEl = $('input[name="log_begin"]');
+    var logEndEl = $('input[name="log_end"]');
     var contentEl = $('textarea[name="content"]');
+    var rangeSeparateEl = $('#id_range_separate_char');
     var tpl;
+    if (logType == 0) {
+        logEndEl.hide();
+        rangeSeparateEl.hide();
+    } else {
+        logEndEl.show();
+        rangeSeparateEl.show();
+    }
     if ((tpl = weeklog_content_template['type-' + logType]) && contentEl.val() != tpl) {
         if (!$.trim(contentEl.val()) || confirm('是否清空内容?')) {
             contentEl.val(weeklog_content_template['type-' + logType]);
