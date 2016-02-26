@@ -33,7 +33,8 @@ html_page_top2();
 		<?php echo plugin_lang_get( 'log_begin_end' ) ?>
 	</td>
 	<td width="75%">
-		<input type="text" name="log_begin"  > <span id="id_range_separate_char">-</span>  <input type="text" name="log_end" >
+		<input type="text" name="log_begin"  style="display:none"> <span id="id_range_separate_char" style="display:none">-</span>  <input type="text"
+																															 value="<?php echo date("Y-m-d")?>" name="log_end" >
 	</td>
 </tr>
 

@@ -19,10 +19,10 @@ function weeklog_page_add_onLogTypeChange(logType) {
     var rangeSeparateEl = $('#id_range_separate_char');
     var tpl;
     if (logType == 0) {
-        logEndEl.hide();
+        logBeginEl.hide();
         rangeSeparateEl.hide();
     } else {
-        logEndEl.show();
+        logBeginEl.show();
         rangeSeparateEl.show();
     }
     if ((tpl = weeklog_content_template['type-' + logType]) && contentEl.val() != tpl) {
