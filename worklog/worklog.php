@@ -67,6 +67,8 @@ class worklogPlugin extends MantisPlugin {
           $import_page = 'worklog_add.php';
         }
         $import_page .= '&log_type=0&';
+        $import_page .= '&log_begin=';
+        $import_page .= '&log_end=';
         $import_page .= '&content=';
         $import_page .= $content;
         $import_page .= '&subject=';
