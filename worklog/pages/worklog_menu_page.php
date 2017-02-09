@@ -127,6 +127,7 @@ if( $f_search == "" ){
 for ($i=0;$i<$worklog_count1;$i++) {
 	$row = db_fetch_array($result);
 	extract( $row, EXTR_PREFIX_ALL, "v" );
+    $pos = isset($pos) ? $pos : false;
     if(( isset( $search_string )) or ($pos === false)) {
    		$v_subject = eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_subject );
     	$v_content 	= eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_content );
@@ -153,7 +154,7 @@ for ($i=0;$i<$worklog_count1;$i++) {
 	}
 	$v_content = trim(substr($v_content, 0, 25));
 	$v_content .="...";
-
+    $v_log_type = isset($v_log_type) ? $v_log_type : 0;
 	if (ON == plugin_config_get('worklog_view_window') ){
 		if( helper_get_current_project() == '0000000' ){
 			PRINT "<li><span class=\"worklog-subject\">[".worklog_type_display($v_log_type)."]<a href=\"$g_worklog_view_page&f_id=$v_id\" target=_new>$v_subject</a> [$t_project_name] </span><br><span>$v_content</span><br>";
