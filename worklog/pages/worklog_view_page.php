@@ -21,7 +21,7 @@ $f_id = gpc_get_int( 'f_id' );
 	for ($i=0;$i<$worklog_count;$i++) {
 		$row = db_fetch_array($result);
 		extract( $row, EXTR_PREFIX_ALL, "v" );
-
+        $v_headline = isset($v_headline) ? $v_headline : '';
 		$v_headline 	= string_display( $v_headline );
 		$v_content 		= string_display_links( $v_content );
 		$v_date_posted 	= date( $g_normal_date_format, $v_date_posted );
