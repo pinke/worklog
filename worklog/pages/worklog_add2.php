@@ -25,6 +25,9 @@ html_page_top1();
 	} else {
 		$f_view_level =plugin_config_get('worklog_view_threshold');
 	}
+    if ($f_log_begin == '') {
+        $f_log_begin = $f_log_end;
+    }
 $result = worklog_add_query($f_project_id, $f_poster_id, $f_content, $f_subject, $f_log_type
 	, $f_log_begin, $f_log_end
 	, $f_ref_issue_ids, $f_ref_log_ids,
