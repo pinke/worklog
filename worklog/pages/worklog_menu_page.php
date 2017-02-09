@@ -131,16 +131,16 @@ for ($i=0;$i<$worklog_count1;$i++) {
 	extract( $row, EXTR_PREFIX_ALL, "v" );
     $pos = isset($pos) ? $pos : false;
     if(( isset( $search_string )) or ($pos === false)) {
-   		$v_subject = eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_subject );
-    	$v_content 	= eregi_replace ( $f_search, "<b>".$f_search."</b>", $v_content );
+   		$v_subject = preg_replace ( $f_search, "<b>".$f_search."</b>", $v_subject );
+    	$v_content 	= preg_replace ( $f_search, "<b>".$f_search."</b>", $v_content );
     }
     if( $f_search2 != "" )  {
-   		$v_subject = eregi_replace ( $f_search2, "<b>".$f_search2."</b>", $v_subject );
-    	$v_content 	= eregi_replace ( $f_search2, "<b>".$f_search2."</b>", $v_content );
+   		$v_subject = preg_replace ( $f_search2, "<b>".$f_search2."</b>", $v_subject );
+    	$v_content 	= preg_replace ( $f_search2, "<b>".$f_search2."</b>", $v_content );
     }
     if( $f_search3 != "" )  {
-   		$v_subject = eregi_replace ( $f_search3, "<b>".$f_search3."</b>", $v_subject );
-    	$v_content 	= eregi_replace ( $f_search3, "<b>".$f_search3."</b>", $v_content );
+   		$v_subject = preg_replace ( $f_search3, "<b>".$f_search3."</b>", $v_subject );
+    	$v_content 	= preg_replace ( $f_search3, "<b>".$f_search3."</b>", $v_content );
     }
 	$v_subject = string_display( $v_subject );
 	$v_content 	= string_display_links( $v_content );
