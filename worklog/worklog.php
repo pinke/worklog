@@ -23,6 +23,8 @@ class worklogPlugin extends MantisPlugin {
       'worklog_view_window'    => OFF,
       'worklog_view_check'     => OFF,
       'worklog_view_threshold' => 10,
+      'worklog_type' => 0,
+      'worklog_pos' => 0,
     );
   }
 
