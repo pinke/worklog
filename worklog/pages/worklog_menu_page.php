@@ -23,12 +23,13 @@ if( $p_project_id != 0 ) {//pk remove filter by project
 	}
 	$t_where_clausole .= ")";
 }
-$f_search = $_POST["f_search"];
-if( !isset( $f_search ) ) {
+$f_search = "";
+if( !isset($_POST["f_search"] ) ) {
 	$f_search = "";
 	$f_search3 = "";
 	$f_search2 = "";
 } else {
+    $f_search = $_POST["f_search"];
 	$f_search3 = "";
 	$f_search2 = "";
     if( $t_where_clausole != "" ){
