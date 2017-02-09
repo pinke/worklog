@@ -124,23 +124,25 @@ if( $f_search == "" ){
     $worklog_count1=$worklog_count;
 }
 
-$v_log_type = plugin_config_get('worklog_type');
+//$v_log_type = plugin_config_get('worklog_type');
 $v_log_type = isset($v_log_type) ? $v_log_type : 0;
 for ($i=0;$i<$worklog_count1;$i++) {
 	$row = db_fetch_array($result);
 	extract( $row, EXTR_PREFIX_ALL, "v" );
     $pos = isset($pos) ? $pos : false;
     if(( isset( $search_string )) or ($pos === false)) {
-   		$v_subject = preg_replace ( $f_search, "<b>".$f_search."</b>", $v_subject );
-    	$v_content 	= preg_replace ( $f_search, "<b>".$f_search."</b>", $v_content );
+        if($f_search !="" ) {
+            $v_subject = str_replace($f_search, "<b>" . $f_search . "</b>", $v_subject);
+            $v_content = str_replace($f_search, "<b>" . $f_search . "</b>", $v_content);
+        }
     }
     if( $f_search2 != "" )  {
-   		$v_subject = preg_replace ( $f_search2, "<b>".$f_search2."</b>", $v_subject );
-    	$v_content 	= preg_replace ( $f_search2, "<b>".$f_search2."</b>", $v_content );
+   		$v_subject = str_replace ( $f_search2, "<b>".$f_search2."</b>", $v_subject );
+    	$v_content 	= str_replace ( $f_search2, "<b>".$f_search2."</b>", $v_content );
     }
     if( $f_search3 != "" )  {
-   		$v_subject = preg_replace ( $f_search3, "<b>".$f_search3."</b>", $v_subject );
-    	$v_content 	= preg_replace ( $f_search3, "<b>".$f_search3."</b>", $v_content );
+   		$v_subject = str_replace ( $f_search3, "<b>".$f_search3."</b>", $v_subject );
+    	$v_content 	= str_replace ( $f_search3, "<b>".$f_search3."</b>", $v_content );
     }
 	$v_subject = string_display( $v_subject );
 	$v_content 	= string_display_links( $v_content );
