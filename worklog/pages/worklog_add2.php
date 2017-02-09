@@ -50,7 +50,7 @@ $result = worklog_add_query($f_project_id, $f_poster_id, $f_content, $f_subject,
 </tr>
 <tr>
 	<td class="worklog-body">
-		<?php echo $f_body ?>
+        <?php echo(isset($f_body) ? $f_body : '') ?>
 	</td>
 </tr>
 </table>
