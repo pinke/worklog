@@ -40,7 +40,7 @@ if( !isset($_POST["f_search"] ) ) {
 	$what = " ";
 	$pos = strpos($f_search, $what);
 
-	$search_string = $_POST["search_string"];
+    $search_string = !isset($_POST["search_string"]) ? "" : $_POST["search_string"];
 	if (($pos === false) or (isset( $search_string ))){
 		$t_where_clausole = $t_where_clausole . " ( (subject LIKE '%".addslashes($f_search)."%')
 				OR (content LIKE '%".addslashes($f_search)."%') ) ";
