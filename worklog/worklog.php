@@ -50,14 +50,13 @@ class worklogPlugin extends MantisPlugin {
 	function mainmenu() {
 		return array(
 			array(
-				'title' => plugin_lang_get( 'title' ),
+				'title' => plugin_lang_get( 'menu_worklog_link' ),
 				'access_level' => plugin_config_get( 'admin_own_threshold' ),
 				'url' => plugin_page( 'worklog_menu_page.php' ),
 				'icon' => 'fa-random'
 			)
 		);
 	}
- 
 
   function worklogmenu() {
     if (ON == plugin_config_get( 'promote_text' ) ){
