@@ -36,9 +36,9 @@ class worklogPlugin extends MantisPlugin {
 	}
 
   function init() {
-    plugin_event_hook( 'EVENT_MENU_MAIN', 'mainmenu' );
-    plugin_event_hook( 'EVENT_MENU_ISSUE', 'worklogmenu' );
-    plugin_event_hook('EVENT_LAYOUT_RESOURCES', 'resources');
+   // plugin_event_hook( 'EVENT_MENU_MAIN', 'mainmenu' );
+    //plugin_event_hook( 'EVENT_MENU_ISSUE', 'worklogmenu' );
+   // plugin_event_hook('EVENT_LAYOUT_RESOURCES', 'resources');
 
   }
 
@@ -47,9 +47,17 @@ class worklogPlugin extends MantisPlugin {
     .'<script type="text/javascript" src="' . plugin_file( 'worklog.js' ) . '"></script>';
   }
 
-  function mainmenu() {
-    return array( '<a href="'. plugin_page( 'worklog_menu_page.php' ) . '">' . lang_get( 'menu_worklog_link' ) . '</a>' );
-  }
+	function mainmenu() {
+		return array(
+			array(
+				'title' => plugin_lang_get( 'title' ),
+				'access_level' => plugin_config_get( 'admin_own_threshold' ),
+				'url' => plugin_page( 'worklog_menu_page.php' ),
+				'icon' => 'fa-random'
+			)
+		);
+	}
+ 
 
   function worklogmenu() {
     if (ON == plugin_config_get( 'promote_text' ) ){
