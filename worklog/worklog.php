@@ -5,7 +5,7 @@ class worklogPlugin extends MantisPlugin {
     $this->name        = 'worklog';
     $this->description = 'Write day,ork log MantisBT installation.';
     $this->version     = '0.1';
-    $this->requires    = array('MantisCore' => '1.3.0',);
+    $this->requires    = array('MantisCore' => '2.0.0',);
     $this->author      = 'pinke';
     $this->contact     = 'xpinke@qq.com';
     $this->url         = 'https://github.com/pinke/worklog';
