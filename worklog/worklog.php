@@ -51,7 +51,7 @@ class worklogPlugin extends MantisPlugin {
 		return array(
 			array(
 				'title' => plugin_lang_get( 'title' ),
-				'access_level' => plugin_config_get( 'admin_own_threshold' ),
+			//	'access_level' => plugin_config_get( 'admin_own_threshold' ),
 				'url' => plugin_page( 'worklog_menu_page.php' ),
 				'icon' => 'fa-random'
 			)
