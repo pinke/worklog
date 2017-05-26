@@ -1,5 +1,6 @@
 <?php
 $s_menu_worklog_link = "WorkLog";
+$s_plugin_worklog_title = "WorkLog";
 $s_plugin_worklog_add_worklog = "Add Log";
 $s_plugin_worklog_add_worklog_title = "New Log";
 $s_plugin_worklog_post_worklog_button = "Promote to Log";

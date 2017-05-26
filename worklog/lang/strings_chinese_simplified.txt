@@ -1,5 +1,6 @@
 <?php
 $s_menu_worklog_link = "工作日志";
+$s_plugin_worklog_title = "工作日志";
 $s_plugin_worklog_add_worklog = "添加日志";
 $s_plugin_worklog_add_worklog_title = "新建日志";
 $s_plugin_worklog_post_worklog_button = "添加日志";
